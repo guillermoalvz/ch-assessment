@@ -7,7 +7,7 @@
         "express": "4.15.0",
         "lodash": "4.17.10",
         "jsonwebtoken": "8.1.0",
-        "mongoose": "^4.2.4"
+        "mongoose": "^6.13.10"
     },
     "devDependencies": {
         "mocha": "5.0.5"
