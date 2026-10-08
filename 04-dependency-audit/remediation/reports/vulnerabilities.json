@@ -1,0 +1,137 @@
+{
+  "generated_at": "2026-10-07T21:26:08.880802+00:00",
+  "project": "/home/ubuntu/ch-assessment/04-dependency-audit/remediation",
+  "selected_scanners": [
+    "npm",
+    "yarn",
+    "snyk"
+  ],
+  "manifest_sha256_and_lockfile_sha256": {
+    "package.json": "554791fc95153ba81cd67ab5232af89d64634e993fec93353da9fea002484faf",
+    "package-lock.json": "a05a5ba77cb652183ab267069778197dc9ff722e282670255f3d28cc9f1318ff",
+    "yarn.lock": "045dedbfde91770df186bf0a3d3b2629f70d1b54f540b0657594e35b27f202d1"
+  },
+  "declared_dependencies": {
+    "dependencies": {
+      "body-parser": "^1.19.0",
+      "dotenv": "^8.2.0",
+      "express": "4.22.3",
+      "lodash": "4.18.1",
+      "jsonwebtoken": "9.0.3",
+      "mongoose": "9.11.1"
+    },
+    "devDependencies": {
+      "mocha": "12.0.3"
+    }
+  },
+  "resolved_dependencies": {
+    "dependencies": {
+      "body-parser": "1.20.8",
+      "dotenv": "8.6.0",
+      "express": "4.22.3",
+      "lodash": "4.18.1",
+      "jsonwebtoken": "9.0.3",
+      "mongoose": "9.11.1"
+    },
+    "devDependencies": {
+      "mocha": "12.0.3"
+    }
+  },
+  "counting_note": "Rows are unique per scanner/package/advisory; do not add scanner totals. Fix counts mean at least one path has scanner remediation, not all paths.",
+  "deduplication_note": "Merge the same package only on shared GHSA/CVE identifiers or exact advisory URLs, including transitive alias matches. Unmatched advisories remain separate. Use the highest severity and retain source evidence; counts may include unmatched aliases of the same vulnerability.",
+  "scans": {
+    "npm": {
+      "command": [
+        "npm",
+        "audit",
+        "--json",
+        "--cache",
+        ".scan/npm-cache"
+      ],
+      "started_at": "2026-10-07T20:00:58.075805+00:00",
+      "version": "11.19.0",
+      "exit_code": 0,
+      "duration_seconds": 0.834,
+      "count_unit": "vulnerable packages (including inherited vulnerabilities)",
+      "reported_counts": {
+        "info": 0,
+        "low": 0,
+        "medium": 0,
+        "high": 0,
+        "critical": 0,
+        "total": 0
+      },
+      "vulnerable_packages": {},
+      "status": "completed",
+      "parsed_path_occurrences": 0,
+      "unique_advisories": 0,
+      "unique_advisories_by_severity": {},
+      "high_critical_unique_advisories": 0,
+      "advisories_with_any_scanner_fix": 0,
+      "high_critical_with_any_scanner_fix": 0
+    },
+    "yarn": {
+      "command": [
+        "yarn",
+        "audit",
+        "--json",
+        "--registry",
+        "https://registry.npmjs.org"
+      ],
+      "started_at": "2026-10-07T20:00:58.076231+00:00",
+      "version": "1.22.22",
+      "exit_code": 0,
+      "duration_seconds": 0.868,
+      "count_unit": "advisory/dependency-path occurrences",
+      "reported_counts": {
+        "info": 0,
+        "low": 0,
+        "medium": 0,
+        "high": 0,
+        "critical": 0
+      },
+      "status": "completed",
+      "parsed_path_occurrences": 0,
+      "unique_advisories": 0,
+      "unique_advisories_by_severity": {},
+      "high_critical_unique_advisories": 0,
+      "advisories_with_any_scanner_fix": 0,
+      "high_critical_with_any_scanner_fix": 0
+    },
+    "snyk": {
+      "command": [
+        "snyk",
+        "test",
+        "--file=package.json",
+        "--package-manager=npm",
+        "--dev",
+        "--json"
+      ],
+      "started_at": "2026-10-07T20:00:58.076931+00:00",
+      "version": "1.1307.4",
+      "exit_code": 0,
+      "duration_seconds": 13.75,
+      "count_unit": "unique Snyk advisories and vulnerable dependency paths",
+      "reported_unique_count": 0,
+      "reported_summary": "No known vulnerabilities",
+      "upgradeable_path_occurrences": 0,
+      "patchable_path_occurrences": 0,
+      "status": "completed",
+      "parsed_path_occurrences": 0,
+      "unique_advisories": 0,
+      "unique_advisories_by_severity": {},
+      "high_critical_unique_advisories": 0,
+      "advisories_with_any_scanner_fix": 0,
+      "high_critical_with_any_scanner_fix": 0
+    }
+  },
+  "findings": [],
+  "deduplicated_findings": [],
+  "deduplicated_summary": {
+    "advisories": 0,
+    "packages": 0,
+    "by_severity": {},
+    "high_critical": 0,
+    "with_any_scanner_fix": 0
+  }
+}

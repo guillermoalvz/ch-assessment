@@ -1,0 +1,47 @@
+{
+  "azure": {
+    "subscription": "00000000-a1a1-4444-a1a1-000000000000",
+    "nsgs": [
+      {
+        "id": "/subscriptions/00000000-a1a1-4444-a1a1-000000000000/resourceGroups/ch-rgp-01-assessment/providers/Microsoft.Network/networkSecurityGroups/ch-rdp-nsg",
+        "name": "ch-rdp-nsg",
+        "insecure_rules": [
+          {
+            "name": "RDP",
+            "protocol": "tcp",
+            "port": "3389",
+            "source": "0.0.0.0/0",
+            "source_prefix": "*",
+            "source_ports": [
+              "*"
+            ],
+            "destinations": [
+              "*"
+            ],
+            "priority": 300
+          }
+        ]
+      },
+      {
+        "id": "/subscriptions/00000000-a1a1-4444-a1a1-000000000000/resourceGroups/ch-rgp-01-assessment/providers/Microsoft.Network/networkSecurityGroups/ch-https-nsg",
+        "name": "ch-https-nsg",
+        "insecure_rules": [
+          {
+            "name": "AllowTagCustom80_443Inbound",
+            "protocol": "tcp",
+            "port": "443",
+            "source": "0.0.0.0/0",
+            "source_prefix": "Internet",
+            "source_ports": [
+              "*"
+            ],
+            "destinations": [
+              "VirtualNetwork"
+            ],
+            "priority": 1020
+          }
+        ]
+      }
+    ]
+  }
+}

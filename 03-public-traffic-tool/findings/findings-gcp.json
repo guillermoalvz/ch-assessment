@@ -1,0 +1,40 @@
+{
+  "gcp": {
+    "project": "project-redacted",
+    "firewall_rules": [
+      {
+        "name": "default-allow-icmp",
+        "network": "https://www.googleapis.com/compute/v1/projects/project-redacted/global/networks/default",
+        "insecure_rules": [
+          {
+            "protocol": "icmp",
+            "port": "all",
+            "source": "0.0.0.0/0"
+          }
+        ]
+      },
+      {
+        "name": "default-allow-rdp",
+        "network": "https://www.googleapis.com/compute/v1/projects/project-redacted/global/networks/default",
+        "insecure_rules": [
+          {
+            "protocol": "tcp",
+            "port": "3389",
+            "source": "0.0.0.0/0"
+          }
+        ]
+      },
+      {
+        "name": "default-allow-ssh",
+        "network": "https://www.googleapis.com/compute/v1/projects/project-redacted/global/networks/default",
+        "insecure_rules": [
+          {
+            "protocol": "tcp",
+            "port": "22",
+            "source": "0.0.0.0/0"
+          }
+        ]
+      }
+    ]
+  }
+}

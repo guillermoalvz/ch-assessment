@@ -1,0 +1,33 @@
+# Terraform local caches, state, plans, and private inputs.
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+*.tfplan
+*.tfvars
+*.tfvars.json
+backend.hcl
+crash.log
+crash.*.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraformrc
+terraform.rc
+.terraform.lock.hcl
+# Credentials must stay outside the repository.
+application_default_credentials.json
+*-credentials.json
+*.pem
+*.key
+__pycache__/
+*.pyc
+.env
+*.log
+**/public-traffic-tool
+**/bin/
+**/.cache/
+!cmd/public-traffic-tool/
+**/node_modules/
+**/.scan/
+**/__pycache__/

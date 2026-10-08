@@ -1,0 +1,262 @@
+{
+	"kics_version": "v2.1.20",
+	"files_scanned": 1,
+	"lines_scanned": 14,
+	"files_parsed": 1,
+	"lines_parsed": 14,
+	"lines_ignored": 0,
+	"files_failed_to_scan": 0,
+	"queries_total": 574,
+	"queries_failed_to_execute": 0,
+	"queries_failed_to_compute_similarity_id": 0,
+	"scan_id": "console",
+	"severity_counters": {
+		"CRITICAL": 0,
+		"HIGH": 1,
+		"INFO": 0,
+		"LOW": 3,
+		"MEDIUM": 4,
+		"TRACE": 0
+	},
+	"total_counter": 8,
+	"total_bom_resources": 0,
+	"start": "2026-10-08T00:07:36.616111231Z",
+	"end": "2026-10-08T00:07:42.432291024Z",
+	"paths": [
+		"/scan/cloudformation.yaml"
+	],
+	"queries": [
+		{
+			"query_name": "S3 Bucket Without Server-side-encryption",
+			"query_id": "b2e8752c-3497-4255-98d2-e4ae5b46bbf5",
+			"query_url": "https://docs.aws.amazon.com/AmazonS3/latest/user-guide/default-bucket-encryption.html",
+			"severity": "HIGH",
+			"platform": "CloudFormation",
+			"cwe": "311",
+			"risk_score": "7.1",
+			"cloud_provider": "AWS",
+			"category": "Encryption",
+			"experimental": false,
+			"description": "S3 Buckets should have server-side encryption at rest enabled to protect sensitive data",
+			"description_id": "314a460b",
+			"files": [
+				{
+					"file_name": "../../scan/cloudformation.yaml",
+					"similarity_id": "357953e9252e57af2e53a00b9db4e08292cd0daaf03feddad8a020ed9011eb39",
+					"line": 6,
+					"resource_type": "AWS::S3::Bucket",
+					"resource_name": "MyBucket",
+					"issue_type": "MissingAttribute",
+					"search_key": "Resources.MyBucket.Properties",
+					"search_line": -1,
+					"search_value": "",
+					"expected_value": "Resources.MyBucket.Properties.BucketEncryption.ServerSideEncryptionConfiguration should be defined and not empty",
+					"actual_value": "Resources.MyBucket.Properties.BucketEncryption.ServerSideEncryptionConfiguration is undefined or empty"
+				}
+			]
+		},
+		{
+			"query_name": "IAM Policies Attached To User",
+			"query_id": "edc95c10-7366-4f30-9b4b-f995c84eceb5",
+			"query_url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html",
+			"severity": "MEDIUM",
+			"platform": "CloudFormation",
+			"cwe": "284",
+			"risk_score": "4.9",
+			"cloud_provider": "AWS",
+			"category": "Access Control",
+			"experimental": false,
+			"description": "IAM policies should be attached only to groups or roles",
+			"description_id": "c1857bae",
+			"files": [
+				{
+					"file_name": "../../scan/cloudformation.yaml",
+					"similarity_id": "7bb15cc6f912b2d2e37b8b9d263edce8876988d676e8f4efe86f197987bb9a6a",
+					"line": 8,
+					"resource_type": "AWS::IAM::User",
+					"resource_name": "UnrestrictedUser",
+					"issue_type": "IncorrectValue",
+					"search_key": "Resources.MyIAMUser.Properties.Policies",
+					"search_line": -1,
+					"search_value": "",
+					"expected_value": "'Resources.MyIAMUser.Properties.Policies' should be undefined or empty",
+					"actual_value": "'Resources.MyIAMUser.Properties.Policies' is not empty"
+				}
+			]
+		},
+		{
+			"query_name": "IAM User Without Password Reset",
+			"query_id": "a964d6e3-8e1e-4d93-8120-61fa640dd55a",
+			"query_url": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-user-loginprofile.html",
+			"severity": "MEDIUM",
+			"platform": "CloudFormation",
+			"cwe": "710",
+			"risk_score": "5.9",
+			"cloud_provider": "AWS",
+			"category": "Best Practices",
+			"experimental": false,
+			"description": "IAM User Login Profile should exist and have PasswordResetRequired property set to true",
+			"description_id": "a44edc48",
+			"files": [
+				{
+					"file_name": "../../scan/cloudformation.yaml",
+					"similarity_id": "4d1c44a733c56e3190fd0aa392066df98982261f7039905a7bc26b441b53708b",
+					"line": 6,
+					"resource_type": "AWS::IAM::User",
+					"resource_name": "UnrestrictedUser",
+					"issue_type": "MissingAttribute",
+					"search_key": "Resources.MyIAMUser.Properties",
+					"search_line": -1,
+					"search_value": "",
+					"expected_value": "'Resources.MyIAMUser.Properties' should be configured with LoginProfile with PasswordResetRequired property set to true",
+					"actual_value": "'Resources.MyIAMUser.Properties' does not include LoginProfile"
+				}
+			]
+		},
+		{
+			"query_name": "IAM policy allows for data exfiltration",
+			"query_id": "022f8938-4b17-420c-aca3-f917f290f322",
+			"query_url": "https://cloudsplaining.readthedocs.io/en/latest/glossary/data-exfiltration/",
+			"severity": "MEDIUM",
+			"platform": "CloudFormation",
+			"cwe": "200",
+			"risk_score": "3.0",
+			"cloud_provider": "AWS",
+			"category": "Resource Management",
+			"experimental": false,
+			"description": "This policy contains actions that can retrieve information unrestricted and could lead to data exfiltration",
+			"description_id": "022f8938",
+			"files": [
+				{
+					"file_name": "../../scan/cloudformation.yaml",
+					"similarity_id": "f5129d6eeff8c2f69418d374be5f8cc4ca071e6e7298fa6139105c258c9c616d",
+					"line": 13,
+					"resource_type": "AWS::IAM::User",
+					"resource_name": "UnrestrictedUser",
+					"issue_type": "IncorrectValue",
+					"search_key": "Resources.MyIAMUser.Properties.Policies.0.PolicyDocument.Statement.0.Action",
+					"search_line": 13,
+					"search_value": "",
+					"expected_value": "'Resources.MyIAMUser.Properties.Policies[0].PolicyDocument.Statement[0].Action' shouldn't contain ilegal actions",
+					"actual_value": "'Resources.MyIAMUser.Properties.Policies[0].PolicyDocument.Statement[0].Action' contains [*]"
+				}
+			]
+		},
+		{
+			"query_name": "S3 Bucket Without SSL In Write Actions",
+			"query_id": "38c64e76-c71e-4d92-a337-60174d1de1c9",
+			"query_url": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket.html",
+			"severity": "MEDIUM",
+			"platform": "CloudFormation",
+			"cwe": "319",
+			"risk_score": "6.8",
+			"cloud_provider": "AWS",
+			"category": "Encryption",
+			"experimental": false,
+			"description": "S3 Buckets should enforce encryption of data transfers using Secure Sockets Layer (SSL)",
+			"description_id": "907676d7",
+			"files": [
+				{
+					"file_name": "../../scan/cloudformation.yaml",
+					"similarity_id": "84c62f0f28c7978b35263ed4fcc5a5d852cfd484d65f0401a95e3d3329413c4d",
+					"line": 2,
+					"resource_type": "AWS::S3::Bucket",
+					"resource_name": "MyBucket",
+					"issue_type": "MissingAttribute",
+					"search_key": "Resources.MyBucket",
+					"search_line": 2,
+					"search_value": "",
+					"expected_value": "Resources.MyBucket bucket has a policy that enforces SSL",
+					"actual_value": "Resources.MyBucket bucket doesn't have a policy"
+				}
+			]
+		},
+		{
+			"query_name": "IAM Access Analyzer Not Enabled",
+			"query_id": "8d29754a-2a18-460d-a1ba-9509f8d359da",
+			"query_url": "https://docs.aws.amazon.com/en_us/AWSCloudFormation/latest/UserGuide/aws-resource-accessanalyzer-analyzer.html",
+			"severity": "LOW",
+			"platform": "CloudFormation",
+			"cwe": "778",
+			"risk_score": "3.5",
+			"cloud_provider": "AWS",
+			"category": "Best Practices",
+			"experimental": false,
+			"description": "IAM Access Analyzer should be enabled and configured to continuously monitor resource permissions",
+			"description_id": "24a6978e",
+			"files": [
+				{
+					"file_name": "../../scan/cloudformation.yaml",
+					"similarity_id": "304c64d5ddfd93593c8aa4e9f10b34fe7d2e7e3634c6e64465b3be292029775c",
+					"line": 1,
+					"resource_type": "n/a",
+					"resource_name": "n/a",
+					"issue_type": "MissingAttribute",
+					"search_key": "Resources",
+					"search_line": -1,
+					"search_value": "",
+					"expected_value": "'AWS::AccessAnalyzer::Analyzer' should be set",
+					"actual_value": "'AWS::AccessAnalyzer::Analyzer' is undefined"
+				}
+			]
+		},
+		{
+			"query_name": "IAM User With No Group",
+			"query_id": "06933df4-0ea7-461c-b9b5-104d27390e0e",
+			"query_url": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-iam.html#scenario-iam-policy",
+			"severity": "LOW",
+			"platform": "CloudFormation",
+			"cwe": "284",
+			"risk_score": "4.3",
+			"cloud_provider": "AWS",
+			"category": "Access Control",
+			"experimental": false,
+			"description": "A IAM user should belong to a group",
+			"description_id": "d7e9b179",
+			"files": [
+				{
+					"file_name": "../../scan/cloudformation.yaml",
+					"similarity_id": "1026976247ab60aff50eda97870257c6553fc2ccaaaa44d4d2ad1e5e9f9bb6e0",
+					"line": 6,
+					"resource_type": "AWS::IAM::User",
+					"resource_name": "UnrestrictedUser",
+					"issue_type": "MissingAttribute",
+					"search_key": "Resources.MyIAMUser.Properties",
+					"search_line": -1,
+					"search_value": "",
+					"expected_value": "'Resources.Properties should contain Groups",
+					"actual_value": "'Resources.Properties' does not contain Groups"
+				}
+			]
+		},
+		{
+			"query_name": "S3 Bucket Should Have Bucket Policy",
+			"query_id": "37fa8188-738b-42c8-bf82-6334ea567738",
+			"query_url": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket.html",
+			"severity": "LOW",
+			"platform": "CloudFormation",
+			"cwe": "665",
+			"risk_score": "4.3",
+			"cloud_provider": "AWS",
+			"category": "Insecure Defaults",
+			"experimental": false,
+			"description": "Checks if S3 Bucket has the same name as a Bucket Policy, if it has, S3 Bucket has a Bucket Policy associated",
+			"description_id": "2b429546",
+			"files": [
+				{
+					"file_name": "../../scan/cloudformation.yaml",
+					"similarity_id": "9ab957847ef6cae2a78977967abeb296e763d48134fc622b166a87706e9bcaf0",
+					"line": 2,
+					"resource_type": "AWS::S3::Bucket",
+					"resource_name": "MyBucket",
+					"issue_type": "IncorrectValue",
+					"search_key": "Resources.MyBucket",
+					"search_line": 2,
+					"search_value": "",
+					"expected_value": "'Resources.MyBucket.Properties.BucketName' or 'Resources.[MyBucket]' should be associated with an 'AWS::S3::BucketPolicy'",
+					"actual_value": "'Resources.MyBucket.Properties.BucketName' or 'Resources.[MyBucket]' is not associated with an 'AWS::S3::BucketPolicy'"
+				}
+			]
+		}
+	]
+}

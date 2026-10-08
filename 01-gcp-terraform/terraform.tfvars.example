@@ -1,0 +1,7 @@
+# Copy to terraform.tfvars (gitignored) and replace all example identities.
+project_id  = "your-gcp-project-id"
+domain_name = "app.example.com"
+ssh_users   = ["user:you@example.com"]
+
+region = "us-central1"
+zone   = "us-central1-a"

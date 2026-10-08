@@ -1,0 +1,31 @@
+{
+  "dependencyCount": 125,
+  "displayTargetFile": "package.json",
+  "filesystemPolicy": false,
+  "filtered": {
+    "ignore": [],
+    "patch": []
+  },
+  "hasUnknownVersions": false,
+  "ignoreSettings": {
+    "adminOnly": false,
+    "autoApproveIgnores": false,
+    "disregardFilesystemIgnores": false,
+    "reasonRequired": false
+  },
+  "isPrivate": true,
+  "licensesPolicy": {
+    "orgLicenseRules": null,
+    "severities": null
+  },
+  "ok": true,
+  "org": "guillermoalvz",
+  "packageManager": "npm",
+  "path": "/home/ubuntu/ch-assessment/04-dependency-audit/remediation",
+  "policy": "",
+  "projectName": "vulnerable-node-app",
+  "summary": "No known vulnerabilities",
+  "targetFile": "",
+  "uniqueCount": 0,
+  "vulnerabilities": []
+}

@@ -1,0 +1,23 @@
+# syntax=docker/dockerfile:1
+# Minimal image, with tag and digest
+FROM registry.access.redhat.com/ubi10/python-312-minimal:1791396818@sha256:08b0cb4d97eb41ff2927eda09c37de5f9854cbc042854f394275ed0293bcafb2
+
+
+RUN groupadd --system --gid 10001 app \
+    && useradd --system --uid 10001 --gid app --no-create-home app
+
+WORKDIR /app
+
+# Copy only runtime files. Dpendencies should be handled separately in a multi-stage build.
+COPY --chown=10001:10001 app.py ./app.py
+
+# HEALTHCHECK example 
+HEALTHCHECK --interval=30s --timeout=5s --start-period=5s --retries=3 \
+  CMD python3 -c "import urllib.request; urllib.request.urlopen('http://localhost:8080/health')"
+
+USER 10001:10001
+
+# Unpriviliged port >1024.
+EXPOSE 8080
+
+CMD ["python3", "app.py"]

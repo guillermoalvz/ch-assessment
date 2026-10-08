@@ -1,0 +1,54 @@
+{
+  "aws": {
+    "regions": [
+      "us-east-1",
+      "us-west-1"
+    ],
+    "security_groups": [
+      {
+        "id": "sg-11111111111111111",
+        "name": "docker-test-n",
+        "region": "us-east-1",
+        "insecure_rules": [
+          {
+            "protocol": "tcp",
+            "port": "18443-18444",
+            "source": "0.0.0.0/0"
+          },
+          {
+            "protocol": "tcp",
+            "port": "443",
+            "source": "0.0.0.0/0"
+          },
+          {
+            "protocol": "tcp",
+            "port": "80",
+            "source": "0.0.0.0/0"
+          }
+        ]
+      },
+      {
+        "id": "sg-22222222222222222",
+        "name": "NDN",
+        "region": "us-east-1",
+        "insecure_rules": [
+          {
+            "protocol": "tcp",
+            "port": "18443",
+            "source": "0.0.0.0/0"
+          },
+          {
+            "protocol": "tcp",
+            "port": "18444",
+            "source": "0.0.0.0/0"
+          },
+          {
+            "protocol": "tcp",
+            "port": "443",
+            "source": "0.0.0.0/0"
+          }
+        ]
+      }
+    ]
+  }
+}

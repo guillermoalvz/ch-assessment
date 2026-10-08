@@ -1,0 +1,42 @@
+{
+  "npm": {
+    "command": [
+      "npm",
+      "audit",
+      "--json",
+      "--cache",
+      ".scan/npm-cache"
+    ],
+    "started_at": "2026-10-07T19:59:58.303636+00:00",
+    "version": "11.19.0",
+    "exit_code": 1,
+    "duration_seconds": 1.968
+  },
+  "yarn": {
+    "command": [
+      "yarn",
+      "audit",
+      "--json",
+      "--registry",
+      "https://registry.npmjs.org"
+    ],
+    "started_at": "2026-10-07T19:59:58.304382+00:00",
+    "version": "1.22.22",
+    "exit_code": 30,
+    "duration_seconds": 1.226
+  },
+  "snyk": {
+    "command": [
+      "snyk",
+      "test",
+      "--file=package.json",
+      "--package-manager=npm",
+      "--dev",
+      "--json"
+    ],
+    "started_at": "2026-10-07T19:59:58.304924+00:00",
+    "version": "1.1307.4",
+    "exit_code": 1,
+    "duration_seconds": 18.713
+  }
+}
